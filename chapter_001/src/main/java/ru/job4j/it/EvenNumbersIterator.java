@@ -13,10 +13,9 @@ public class EvenNumbersIterator implements Iterator<Integer> {
 
     @Override
     public boolean hasNext() {
-        int index = point;
-        while (index < data.length) {
-            if (!isEven(data[index])) {
-                index++;
+        while (point < data.length) {
+            if (data[point] % 2 != 0) {
+                point++;
             } else {
                 return true;
             }
@@ -29,13 +28,6 @@ public class EvenNumbersIterator implements Iterator<Integer> {
         if (!hasNext()) {
             throw new NoSuchElementException();
         }
-        while (!isEven(data[point])) {
-            point++;
-        }
         return data[point++];
-    }
-
-    private boolean isEven(int number) {
-        return number % 2 == 0;
     }
 }
