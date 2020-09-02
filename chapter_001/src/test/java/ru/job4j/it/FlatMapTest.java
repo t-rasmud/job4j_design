@@ -3,6 +3,8 @@ package ru.job4j.it;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.Matchers.is;
 import org.junit.Test;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -52,11 +54,24 @@ public class FlatMapTest {
     }
 
     @Test(expected = NoSuchElementException.class)
-    public void whenEmpty() {
-        Iterator<Iterator<Object>> data = Arrays.asList(
-                Arrays.asList().iterator()
+        public void whenEmpty() {
+            Iterator<Iterator<Object>> data = Arrays.asList(
+                    Arrays.asList().iterator()
+            ).iterator();
+            FlatMap<Object> flat = new FlatMap<>(data);
+            flat.next();
+    }
+
+    @Test
+    public void whenHasEmptyIterator() {
+        Iterator<Iterator<Integer>> data = Arrays.asList(
+                Arrays.asList(1).iterator(),
+                new ArrayList<Integer>().iterator(),
+                Arrays.asList(2, 3).iterator()
         ).iterator();
-        FlatMap<Object> flat = new FlatMap<>(data);
-        flat.next();
+        FlatMap<Integer> flat = new FlatMap<>(data);
+        assertThat(flat.next(), is(1));
+        assertThat(flat.next(), is(2));
+        assertThat(flat.next(), is(3));
     }
 }
