@@ -40,7 +40,7 @@ public class SimpleArray<T> implements Iterable<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new ArrayIterator<>(arr);
+        return new ArrayIterator<>(arr, freeCells);
     }
 
     private static int checkIndex(int index, int length) {

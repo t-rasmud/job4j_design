@@ -119,4 +119,12 @@ public class SimpleArrayTest {
         arr.add(4);
         Integer rsl = arr.get(4);
     }
+
+    @Test
+    public void whenEmptyArrayThenIteratorHasNextIsFalse() {
+        SimpleArray<String> arr = new SimpleArray<>(3);
+        Iterator<String> it = arr.iterator();
+        boolean rsl = it.hasNext();
+        assertThat(rsl, is(false));
+    }
 }
