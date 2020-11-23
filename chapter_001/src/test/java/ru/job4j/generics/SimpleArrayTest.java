@@ -86,7 +86,7 @@ public class SimpleArrayTest {
             System.out.println(next);
         }
         String ln = System.lineSeparator();
-        assertThat(out.toString(), is("1" + ln + "3" + ln + "4" + ln + "null" + ln));
+        assertThat(out.toString(), is("1" + ln + "3" + ln + "4" + ln));
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
