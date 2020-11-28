@@ -6,18 +6,20 @@ import java.util.NoSuchElementException;
 
 public class SimpleArray<T> implements Iterable<T> {
     private T[] container = (T[]) new Object[10];
+    private int count = 0;
     private int modCount = 0;
 
     public T get(int index) {
-        checkIndex(index, modCount);
+        checkIndex(index, count);
         return container[index];
     }
 
     public void add(T model) {
-        if (modCount == container.length) {
+        if (count == container.length) {
             grow();
         }
-        container[modCount] = model;
+        container[count] = model;
+        count++;
         modCount++;
     }
 
