@@ -6,10 +6,12 @@ import java.util.NoSuchElementException;
 
 public class Linked<T> implements Iterable<T> {
     private Node<T> first;
+    private int count = 0;
     private int modCount = 0;
 
     public void add(T model) {
         Node<T> node = new Node<>(model, null);
+        count++;
         modCount++;
         if (first == null) {
             first = node;
@@ -23,7 +25,7 @@ public class Linked<T> implements Iterable<T> {
     }
 
     public T get(int index) {
-        checkIndex(index, modCount);
+        checkIndex(index, count);
         Node<T> current = first;
         for (int i = 1; i <= index; i++) {
             current = current.next;
