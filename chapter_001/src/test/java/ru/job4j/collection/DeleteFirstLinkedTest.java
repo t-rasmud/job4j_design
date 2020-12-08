@@ -51,4 +51,12 @@ public class DeleteFirstLinkedTest {
         Iterator<Integer> it = linked.iterator();
         assertThat(it.next(), is(1));
     }
+
+    @Test(expected = NoSuchElementException.class)
+    public void whenDeleteLastAndThenDeleteEmptyLinked() {
+        ForwardLinked<Integer> linked = new ForwardLinked<>();
+        linked.add(1);
+        assertThat(linked.deleteLast(), is(1));
+        linked.deleteLast();
+    }
 }
