@@ -62,5 +62,14 @@ public class BitOperation {
         System.out.println("bo1 hashcode: " + bo1.hashCode());
         System.out.println("bo2 hashcode: " + bo2.hashCode());
         System.out.println("bo1.equals(bo2): " + bo1.equals(bo2));
+        Integer i = new Integer(5);
+        String s = new String("abc");
+        System.out.println("i hashcode: " + i.hashCode());
+        System.out.println("s hashcode: " + s.hashCode());
+        int h = 123456789;
+        System.out.println(binary(h));
+        System.out.println(binary(h >>> 16));
+        System.out.println(binary(h ^ (h >>> 16)));
+        s.hashCode();
     }
 }
