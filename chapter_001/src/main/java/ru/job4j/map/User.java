@@ -4,6 +4,8 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.util.HashMap;
+import java.util.Map;
 
 public class User {
     private String name;
@@ -51,7 +53,11 @@ public class User {
     }
 
     public static void main(String[] args) {
-        User user = new User("John", 2, new GregorianCalendar(1985, Calendar.APRIL, 6));
-        System.out.println(user);
+        User user1 = new User("John", 2, new GregorianCalendar(1985, Calendar.APRIL, 6));
+        User user2 = new User("John", 2, new GregorianCalendar(1985, Calendar.APRIL, 6));
+        Map<User, Object> map = new HashMap<>();
+        map.put(user1, 1);
+        map.put(user2, 2);
+        System.out.println(map);
     }
 }
