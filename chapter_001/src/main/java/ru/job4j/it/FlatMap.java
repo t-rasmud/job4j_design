@@ -24,6 +24,7 @@ public class FlatMap<T> implements Iterator<T> {
     }
 
     @Override
+    @SuppressWarnings("iteration:method.invocation")    // next implementation: call to next in Iterator implementation
     public T next() {
         if (!hasNext()) {
             throw new NoSuchElementException();
